@@ -1,4 +1,4 @@
-node{
+pipeline{
     stage('git clone'){
         git 'https://github.com/arunkumargowda3/staragile.git'
     }
@@ -10,9 +10,9 @@ node{
         //    sh 'mvn package sonar:sonar'
        // }
    // }
-    stage('removing the images') {
-       sh 'docker rmi -f $(docker images -q)'
-    }
+    //stage('removing the images') {
+       //sh 'docker rmi -f $(docker images -q)'
+   // }
     stage('docker build and push'){
         sh 'docker build -t arunkumarkn/prajwalimages:latest .'
     }
