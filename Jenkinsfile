@@ -24,12 +24,12 @@ pipeline {
      // sh 'docker rm $(docker ps --filter status=exited -q)'
    // }
   // }
-   stage('removing the images') {
+   //stage('removing the images') {
 
-    steps {
-      sh 'docker rmi -f $(docker images -q)'
-    }
-   }
+   // steps {
+    //  sh 'docker rmi -f $(docker images -q)'
+  //  }
+ //  }
 
    stage('Build') {
 
