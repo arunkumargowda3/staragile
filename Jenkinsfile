@@ -1,4 +1,4 @@
-pipeline{
+node{
     stage('git clone'){
         git 'https://github.com/arunkumargowda3/staragile.git'
     }
