@@ -1,37 +1,68 @@
-node{
-    stage('git clone'){
+pipeline {
+    agent any 
+    environment {
+		DOCKERHUB_CREDENTIALS=credentials('docker_cred')  //docker login passwrdand username
+	}
+    stages{
+    stage('checkout the project') {
+      steps {
         git 'https://github.com/arunkumargowda3/staragile.git'
-    }
-    stage('mv package'){
         sh 'mvn clean package'
     }
-    //stage('sonarqube'){
-       // withSonarQubeEnv(installationName: 'sonarqube' , credentialsId: 'sonarqube_token') {
-        //    sh 'mvn package sonar:sonar'
-       // }
+   }
+    
+
+    //stage('stopping running containers') {
+
+    //steps {
+     //sh 'docker stop $(docker ps --filter status=running -q)'
    // }
-    //stage('removing the images') {
-       //sh 'docker rmi -f $(docker images -q)'
+  // }
+   //stage('removing stopped containers') {
+
+   //steps {
+     // sh 'docker rm $(docker ps --filter status=exited -q)'
    // }
-    stage('docker build and push'){
-        sh 'docker build -t arunkumarkn/prajwalimages:latest .'
+  // }
+   stage('removing the images') {
+
+    steps {
+      sh 'docker rmi -f $(docker images -q)'
     }
-    stage('docker push'){
-        withCredentials([string(credentialsId: 'dockerhub_correct', variable: 'docker_hub')]) {
-        //withCredentials([string(credentialsId: 'docker_hub_login', variable: 'dockerlog')]) {
-           // sh('curl -u arunkumarkn:$dockerlog https://hub.docker.com')
-           sh 'docker login -u arunkumarkn -p ${docker_hub}'
-        }
+   }
+
+   stage('Build') {
+
+			steps {
+				sh 'docker build -t arunkumarkn/war_test_docker:latest .'
+			}
+		}
+    stage('Login') {
+
+			steps {
+				sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin' //docker login -u arunkumarkn -p
+
+			}
     }
-    stage('dockerpushimages'){
-        sh 'docker push arunkumarkn/prajwalimages:latest'
-		sh 'docker logout'
-    }
-    post{
-        success{
-            slackSend channel: 'jenkinsproject', message: 'build is success'
-    }
+    stage('Push') {
+
+			steps {
+				sh 'docker push arunkumarkn/war_test_docker:latest'
+			}
+		}
+    stage('deploy') {
+      steps {
+
+        sh 'docker run -itd -p 8030:8080 arunkumarkn/war_test_docker:latest'
+      }
     }
     
+
+  }
+  post {
+		always {
+			sh 'docker logout'
+		}
+	}
+	
 }
-//sh 'docker push arunkumarkn/war_test_docker:latest'
