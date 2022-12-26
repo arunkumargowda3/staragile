@@ -12,7 +12,10 @@
       name: docker
       state: started
       enabled: true
- 
+   
+  - name: docker login
+    command: docker login -u arunkumarkn -p A960610j@
+
   - name: pull the image
     command: docker pull arunkumarkn/addressbook:latest
 
