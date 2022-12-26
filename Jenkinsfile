@@ -13,6 +13,7 @@ pipeline {
 			    sh 'docker login -u arunkumarkn -p A960610j@'
 			    sh 'docker push arunkumarkn/adressbook234'
 		    }
+	    }
     }
 	    post{
 		    success{
