@@ -4,7 +4,7 @@ pipeline {
     stage('checkout the project') {
       steps {
         git 'https://github.com/arunkumargowda3/staragile.git'
-        sh 'mvn clean pakage'
+        sh 'mvn clean package'
     }
     }
     }
