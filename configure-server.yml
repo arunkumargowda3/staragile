@@ -13,7 +13,7 @@
       state: started
       enabled: true
    
-  - name: docker login
+  - name: docker login to hub
     command: docker login -u arunkumarkn -p A960610j@
 
   - name: pull the image
