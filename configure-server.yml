@@ -12,7 +12,10 @@
       name: docker
       state: started
       enabled: true
+ 
+  - name: pull the image
+    command: docker pull arunkumarkn/addressbook:latest
 
   - name: deploy addressbook application
-    command: docker run -itd -p 8080:8080 shubhamkushwah123/addressbook:latest
+    command: docker run -itd -p 8080:8080 arunkumarkn/addressbook:latest
 
