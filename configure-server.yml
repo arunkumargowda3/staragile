@@ -17,8 +17,8 @@
     command: docker login -u arunkumarkn -p A960610j@
 
   - name: pull the image
-    command: docker pull arunkumarkn/addressbook:latest
+    command: docker pull arunkumarkn/adressbook234:latest
 
   - name: deploy addressbook application
-    command: docker run -itd -p 8080:8080 arunkumarkn/addressbook:latest
+    command: docker run -itd -p 8080:8080 arunkumarkn/adressbook234:latest
 
