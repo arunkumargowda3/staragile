@@ -7,6 +7,12 @@ pipeline {
         sh 'mvn clean package'
     }
     }
+	    stage('docjerbu image') {
+		    steps{
+			    sh 'docker build -t arunkumarkn/adressbook234 .'
+			    sh 'docker login -u arunkumarkn -p A960610j@'
+			    sh 'docker push arunkumarkn/adressbook234'
+		    }
     }
 	    post{
 		    success{
