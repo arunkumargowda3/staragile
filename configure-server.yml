@@ -1,6 +1,6 @@
 ---
 - hosts: deploy
-  user: ansible
+  user: ubuntu
   become: yes
   tasks:
   - name: install docker
