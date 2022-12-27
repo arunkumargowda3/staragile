@@ -1,7 +1,7 @@
 ---
 - hosts: all
   user: ansible
-  #become: yes
+  become: yes
   tasks:
   - name: install docker
     apt: 
