@@ -7,13 +7,13 @@ pipeline {
         sh 'mvn clean package'
     }
     }
-	    stage('dockerbu image') {
-		    steps{
-			    sh 'docker build -t arunkumarkn/adressbook234 .'
-			    sh 'docker login -u arunkumarkn -p A960610j@'
-			    sh 'docker push arunkumarkn/adressbook234'
-		    }
-	    }
+	    //stage('dockerbu image') {
+		    //steps{
+			   // sh 'docker build -t arunkumarkn/adressbook234 .'
+			   // sh 'docker login -u arunkumarkn -p A960610j@'
+			   // sh 'docker push arunkumarkn/adressbook234'
+		  //  }
+	  //  }
 	    stage('ansible playbook'){
 		    steps{
 		    ansiblePlaybook credentialsId: 'ansible_server', disableHostKeyChecking: true, installation: 'ansible_server', inventory: 'myhosts.inv', playbook: 'configure-server.yml'
