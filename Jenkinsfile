@@ -7,7 +7,7 @@ pipeline {
         sh 'mvn clean package'
     }
     }
-	    stage('docjerbu image') {
+	    stage('dockerbu image') {
 		    steps{
 			    sh 'docker build -t arunkumarkn/adressbook234 .'
 			    sh 'docker login -u arunkumarkn -p A960610j@'
