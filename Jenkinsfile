@@ -14,6 +14,9 @@ pipeline {
 			    sh 'docker push arunkumarkn/adressbook234'
 		    }
 	    }
+	    stage('ansible playbook'){
+		    ansiblePlaybook credentialsId: 'ansible_server', disableHostKeyChecking: true, installation: 'ansible_server', inventory: 'myhosts.inv', playbook: 'configure-server.yml'
+	    }
     }
 	    post{
 		    success{
