@@ -1,6 +1,6 @@
 ---
 - hosts: all
-  user: ansible
+  user: ec2-user
   become: yes
   tasks:
   - name: install docker
