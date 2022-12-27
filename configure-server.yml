@@ -1,7 +1,7 @@
 ---
 - hosts: deploy
-  #user: ansible
-  #become: yes
+  user: ansible
+  become: yes
   tasks:
   - name: install docker
     apt: 
