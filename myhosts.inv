@@ -1,3 +1,2 @@
 [deploy]
 65.1.131.96 ansible_ssh_pass=12345 ansible_ssh_user=ansible
-
