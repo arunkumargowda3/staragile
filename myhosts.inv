@@ -1,2 +1,2 @@
 [deploy]
-10.0.2.243 ansible_user=ansible
+10.0.2.243 ansible_user=ansible ansible_ssh_pass:12345
