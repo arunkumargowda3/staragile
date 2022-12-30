@@ -10,7 +10,7 @@ pipeline {
 	    //stage('dockerbu image') {
 		    //steps{
 			   // sh 'docker build -t arunkumarkn/adressbook234 .'
-			   // sh 'docker login -u arunkumarkn -p A960610j@'
+			   // sh 'docker login -u arunkumarkn -p passwd123'
 			   // sh 'docker push arunkumarkn/adressbook234'
 		  //  }
 	  //  }
