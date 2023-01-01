@@ -1,2 +1,2 @@
 [deploy_server]
-172-31-94-141 ansible_ssh_user=ubuntu
+prodserver ansible_ssh_host=172-31-94-141
