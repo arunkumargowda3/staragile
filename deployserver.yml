@@ -1,6 +1,6 @@
 ---
-- hosts: deploy
-  user: ansible
+- hosts: deploy_server
+  user: ubuntu
   become: yes
   tasks:
   - name: install docker
@@ -18,8 +18,8 @@
     command: docker login -u arunkumarkn -p A960610j@
 
   - name: pull the image
-    command: docker pull arunkumarkn/adressbook234:latest
+    command: docker pull arunkumarkn/addressbook:latest
 
   - name: deploy addressbook application
-    command: docker run -itd -p 8080:8080 arunkumarkn/adressbook234:latest
+    command: docker run -itd -p 8080:8080 arunkumarkn/addressbook:latest
 
