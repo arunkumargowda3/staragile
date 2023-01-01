@@ -29,6 +29,7 @@ pipeline {
         //ansiblePlaybook credentialsId: 'ansible_server', disableHostKeyChecking: true, installation: 'ansible_server', inventory: 'myhosts.inv', playbook: 'deployserver.yml'
         //}
     //}
+    }
         
        post {
           success {
@@ -36,8 +37,6 @@ pipeline {
         }
          failure {
             emailext body: "${env.BUILD_URL} has result ${currentBuild.result}", recipientProviders: [[$class: 'DevelopersRecipientProvider'], [$class: 'RequesterRecipientProvider']], subject: "Status of pipeline: ${currentBuild.fullDisplayName}"
-        }    
-
-  }  
-    }
+        }
+       }
 }
