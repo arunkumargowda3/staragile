@@ -11,10 +11,10 @@ pipeline {
         sh 'mvn clean package'
       }
     }
-}
     stage('build Docker Images') {
       steps {
           sh ' docker build -t arunkumarkn/addressbook .'
       }
+    }
     }
 }
