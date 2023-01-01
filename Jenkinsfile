@@ -24,7 +24,7 @@ pipeline {
             }
         }
     }
-    stage('build Docker Images') {
+    stage('configure and deploying to ansible server') {
       steps {
         ansiblePlaybook credentialsId: 'ansible_server', disableHostKeyChecking: true, installation: 'ansible_server', inventory: 'myhosts.inv', playbook: 'deployserver.yml'
         }
