@@ -6,7 +6,6 @@ pipeline {
         git 'https://github.com/arunkumargowda3/staragile.git'
       }
     }
-    }
     stage('maven clean package'){
       steps{
         sh 'mvn clean package'
