@@ -12,4 +12,11 @@ pipeline {
       }
     }
 }
+    stages{
+    stage('build Docker Images') {
+      steps {
+          sh ' docker build -t arunkumarkn/addressbook .'
+      }
+    }
+    }
 }
