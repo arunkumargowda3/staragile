@@ -11,11 +11,11 @@ pipeline {
         sh 'mvn clean package'
       }
     }
-    //stage('build Docker Images') {
-      //steps {
-        //  sh ' docker build -t arunkumarkn/addressbook .'
-      //}
-    //}
+    stage('build Docker Images') {
+      steps {
+          sh ' docker build -t arunkumarkn/addressbook .'
+      }
+    }
     //stage('docker login and push image to docker hub'){
       //  steps {
         //withCredentials([usernamePassword(credentialsId: 'docker_hub_passwd', passwordVariable: 'docker_passwd_var', usernameVariable: 'docker_username_var')]) {
@@ -24,11 +24,11 @@ pipeline {
             //}
         //}
     //}
-    //stage('configure and deploying to ansible server') {
-      //steps {
-        //ansiblePlaybook credentialsId: 'ansible_server', disableHostKeyChecking: true, installation: 'ansible_server', inventory: 'myhosts.inv', playbook: 'deployserver.yml'
-        //}
-    //}
+    stage('configure and deploying to ansible server') {
+      steps {
+        ansiblePlaybook credentialsId: 'ansible_server', disableHostKeyChecking: true, installation: 'ansible_server', inventory: 'myhosts.inv', playbook: 'deployserver.yml'
+        }
+    }
     }
         
        post {
